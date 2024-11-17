@@ -49,8 +49,8 @@ func (a *arangoDB) unicastprefixHandler(obj *kafkanotifier.EventMessage) error {
 	}
 	glog.V(5).Infof("Processing action: %s for key: %s ID: %s", obj.Action, obj.Key, obj.ID)
 	var o message.UnicastPrefix
-	// Skip if not an IPv6 address (no colons present)
-	if !strings.Contains(obj.Key, ":") {
+	// Skip if this is an IPv6 address (no colons present)
+	if strings.Contains(obj.Key, ":") {
 		return nil
 	}
 	_, err := a.inetprefixV4.ReadDocument(ctx, obj.Key, &o)

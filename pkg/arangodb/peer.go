@@ -13,7 +13,7 @@ import (
 func (a *arangoDB) processPeerSession(ctx context.Context, key string, p *message.PeerStateChange) error {
 	glog.Infof("process bgp session: %s", p.Key)
 
-	if p.IsIPv4 == true {
+	if p.IsIPv4 == false {
 		return nil
 	} else {
 		ln, err := a.getPeerV4(ctx, p, true)
@@ -37,13 +37,12 @@ func (a *arangoDB) processPeerSession(ctx context.Context, key string, p *messag
 }
 
 func (a *arangoDB) getPeerV4(ctx context.Context, e *message.PeerStateChange, local bool) (bgpPeer, error) {
-	// Need to find ls_node object matching ls_link's IGP Router ID
 	query := "FOR d IN " + a.ebgpPeerV4.Name()
 	if local {
-		//glog.Infof("get local node per session: %s, %s", e.LocalBGPID, e.ID)
+		glog.Infof("get local node for peer session: %s, %s", e.LocalBGPID, e.ID)
 		query += " filter d.router_id == " + "\"" + e.LocalBGPID + "\""
 	} else {
-		//glog.Infof("get remote node per session: %s, %v", e.RemoteBGPID, e.ID)
+		glog.Infof("get remote node for peer session: %s, %v", e.RemoteBGPID, e.ID)
 		query += " filter d.router_id == " + "\"" + e.RemoteBGPID + "\""
 	}
 	query += " return d"

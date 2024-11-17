@@ -43,8 +43,8 @@ var (
 
 func init() {
 	runtime.GOMAXPROCS(1)
-	// flag.StringVar(&msgSrvAddr, "message-server", "198.18.133.104:30092", "URL to the messages supplying server")
-	// flag.StringVar(&dbSrvAddr, "database-server", "http://198.18.133.104:30852", "{dns name}:port or X.X.X.X:port of the graph database")
+	// flag.StringVar(&msgSrvAddr, "message-server", "198.18.133.103:30092", "URL to the messages supplying server")
+	// flag.StringVar(&dbSrvAddr, "database-server", "http://198.18.133.103:30852", "{dns name}:port or X.X.X.X:port of the graph database")
 	// flag.StringVar(&dbName, "database-name", "jalapeno", "DB name")
 	// flag.StringVar(&dbUser, "database-user", "root", "DB User name")
 	// flag.StringVar(&dbPass, "database-pass", "jalapeno", "DB User's password")
@@ -56,9 +56,9 @@ func init() {
 	flag.StringVar(&dbPass, "database-pass", "", "DB User's password")
 
 	flag.StringVar(&peer, "peer-name", "peer", "peer Collection name, default \"peer\"")
-	flag.StringVar(&ebgpPeerV4, "ebgp-peer-name", "ebgp_peer_v6", "ebgp peer v6 Collection name, default \"ebgp_peer_v6\"")
-	flag.StringVar(&ebgpprefixV4, "ebgpprefixv6-prefix-name", "ebgp_prefix_v6", "ebgpprefix v6 Collection name, default \"ebgp_prefix_v6\"")
-	flag.StringVar(&inetprefixV4, "inetprefixv6-prefix-name", "inet_prefix_v6", "inet prefix v6 Collection name, default \"inet_prefix_v6\"")
+	flag.StringVar(&ebgpPeerV4, "ebgp-peer-name", "ebgp_peer_v4", "ebgp peer v4 Collection name, default \"ebgp_peer_v4\"")
+	flag.StringVar(&ebgpprefixV4, "ebgpprefixv4-prefix-name", "ebgp_prefix_v4", "ebgpprefix v4 Collection name, default \"ebgp_prefix_v4\"")
+	flag.StringVar(&inetprefixV4, "inetprefixv4-prefix-name", "inet_prefix_v4", "inet prefix v4 Collection name, default \"inet_prefix_v4\"")
 	flag.StringVar(&bgpv4Graph, "bgpv4-graph", "bgpv4_graph", "bgpv4_graph Collection name, default \"bgpv4_graph\"")
 }
 
