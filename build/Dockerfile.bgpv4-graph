@@ -1,0 +1,5 @@
+FROM scratch
+
+COPY ./bin/bgpv4-graph /bgpv4-graph
+ENTRYPOINT ["/bgpv4-graph"]
+
